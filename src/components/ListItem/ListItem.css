@@ -1,0 +1,28 @@
+.cardStyle {
+    border-color: white;
+    border-radius: 12px;
+    background-color: #242424;
+}
+
+.movieCardImageStyle {
+    width: auto;
+    height: 300px;
+    cursor: pointer;
+    border-radius: 12px 12px 0 0;
+    background-color: #242424;
+}
+
+.movieTitleStyle {
+    text-overflow: ellipsis;
+    cursor: pointer;
+    word-break: break-all;
+    color: white;
+    margin: 12px;
+    overflow: hidden;
+    white-space: nowrap;
+    max-lines: 1;
+}
+
+.ratingBarStyle {
+
+}

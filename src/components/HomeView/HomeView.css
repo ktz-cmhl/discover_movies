@@ -1,0 +1,29 @@
+.nav {
+    position: relative;
+    z-index: 750;
+    background-color: #242424;
+    color: white;
+    padding-left: 16px;
+    display: flex;
+    margin-bottom: 16px;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    --hide-animation-timing-function: cubic-bezier(0.19,1,0.22,1);
+    --show-animation-timing-function: cubic-bezier(0.22,1,0.27,1);
+    transition: all .5s var(--hide-animation-timing-function);
+}
+
+.homeViewStyle {
+    max-width: 1280px;
+    margin: auto;
+}
+
+
+.searchBoxStyle {
+    padding: 12px;
+    margin-right: 16px;
+    width: 320px;
+    border-radius: 12px;
+}
