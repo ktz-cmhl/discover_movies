@@ -1,9 +1,11 @@
 import {GridView} from "../GridView/GridView.tsx";
 import "./HomeView.css"
-import {ChangeEvent, useEffect, useLayoutEffect, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import {apiKey, baseUrl} from "../../utils/constants.ts";
 import {MovieResponse} from "../../models/Response.ts";
 import axios from "axios";
+import ReactPaginate from "react-paginate";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default function HomeView() {
     const useStorageState = (
@@ -28,13 +30,21 @@ export default function HomeView() {
     const searchMoviesUrl = `${baseUrl}search/movie?query=${searchInput}&api_key=${apiKey}&page=${pageNumber}`
     const [movies, setMovies] = useState<MovieResponse>();
 
-
+    let isLoading = false;
     useEffect(() => {
-        axios.get(movieUrl).then((response) => {
-            setMovies(response.data);
-        });
-    }, [movieUrl, pageNumber]);
-    const addPage = () => {
+        isLoading = true;
+        if (searchInput == '') {
+            axios.get(movieUrl).then((response) => {
+                setMovies(response.data);
+                isLoading = false;
+            });
+        } else {
+            axios.get(searchMoviesUrl).then((response) => {
+                setMovies(response.data);
+            });
+        }
+    }, [movieUrl, pageNumber, searchInput]);
+    const handlePageChange = () => {
         if (movies != null && movies.total_pages != null) {
             if (movies!.total_pages! > pageNumber) {
                 setPageNumber(pageNumber + 1);
@@ -49,27 +59,61 @@ export default function HomeView() {
         setSearchInput(event.target.value);
     };
 
-    useLayoutEffect(() => {
-        axios.get(searchMoviesUrl).then((response) => {
-            setMovies(response.data);
-        });
-    }, [searchInput]);
-
-    return (
-        <>
-            <header className='nav'>
-                <h2>Discover Movies</h2>
-                <input className='searchBoxStyle'
-                       placeholder="Search Movies" type='search'
-                       value={searchInput}
-                       onChange={handleSearchInput}/>
-            </header>
-            <div className='homeViewStyle'>
-                <GridView results={movies?.results}/>
-                <div>
-                    <button onClick={addPage} className="buttonStyle">Next</button>
+    let totalPages: number = 0;
+    if (movies?.total_pages != null && movies?.total_pages > 500) {
+        totalPages = 500;
+    } else if (movies?.total_pages != null && movies?.total_pages < 500) {
+        totalPages = movies?.total_pages;
+    } else {
+        totalPages = 0;
+    }
+    if (isLoading) {
+        return (
+            <>
+                <header className='nav'>
+                    <h2>Discover Movies</h2>
+                    <input className='searchBoxStyle'
+                           placeholder="Search Movies" type='search'
+                           value={searchInput}
+                           onChange={handleSearchInput}/>
+                </header>
+            </>
+        );
+    } else {
+        return (
+            <>
+                <header className='nav'>
+                    <h2>Discover Movies</h2>
+                    <input className='searchBoxStyle'
+                           placeholder="Search Movies" type='search'
+                           value={searchInput}
+                           onChange={handleSearchInput}/>
+                </header>
+                <div className='homeViewStyle'>
+                    <ReactPaginate pageCount={totalPages}
+                                   onPageChange={(selectedItem) => {
+                                       console.log(selectedItem.selected)
+                                       setPageNumber(selectedItem.selected + 1);
+                                   }}
+                                   disableInitialCallback={true}
+                                   breakLabel='...'
+                                   className='pagingStyle'
+                                   breakLinkClassName='pageLinkStyle'
+                                   previousLabel={<FontAwesomeIcon icon='angle-left'/>}
+                                   nextLabel={<FontAwesomeIcon icon='angle-right'/>}
+                                   pageRangeDisplayed={8}
+                                   initialPage={pageNumber - 1}
+                                   previousLinkClassName='pageLinkStyle'
+                                   nextLinkClassName='pageLinkStyle'
+                                   pageLinkClassName='pageLinkStyle'
+                                   activeLinkClassName='activePageLinkStyle'
+                    />
+                    <GridView results={movies?.results}/>
+                    <div>
+                        <button onClick={handlePageChange} className="buttonStyle">Next</button>
+                    </div>
                 </div>
-            </div>
-        </>
-    );
+            </>
+        );
+    }
 }

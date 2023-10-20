@@ -10,8 +10,8 @@
     align-items: center;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    --hide-animation-timing-function: cubic-bezier(0.19,1,0.22,1);
-    --show-animation-timing-function: cubic-bezier(0.22,1,0.27,1);
+    --hide-animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    --show-animation-timing-function: cubic-bezier(0.22, 1, 0.27, 1);
     transition: all .5s var(--hide-animation-timing-function);
 }
 
@@ -20,10 +20,59 @@
     margin: auto;
 }
 
-
 .searchBoxStyle {
     padding: 12px;
     margin-right: 16px;
     width: 320px;
     border-radius: 12px;
 }
+
+.pagingStyle {
+    border-radius: 10px;
+    align-items: center;
+    flex-direction: row;
+    list-style: none;
+    margin-left: 28px;
+    margin-right: 28px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    background-color: #242424;
+    /*margin-bottom: 2rem;*/
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*justify-content: space-between;*/
+    /*list-style-type: none;*/
+    /*padding: 0 5rem;*/
+    /*width: 1280px;*/
+}
+
+.pageLinkStyle {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    justify-self: center;
+    padding: 10px;
+    margin: 8px;
+    font-size: 15px;
+    text-align: center;
+    color: #242424;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.activePageLinkStyle {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    justify-self: center;
+    padding: 10px;
+    margin: 8px;
+    color: white;
+    background-color: #535bf2;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 8px;
+}
+

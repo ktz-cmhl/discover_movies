@@ -52,7 +52,7 @@ export default function DetailView() {
                             <ul className='genreListStyle' title='Genres'>
                                 {movieDetail.genres?.map((genre) => {
                                     return (
-                                        <li key={genre.id}>{genre.name}</li>
+                                        <li key={genre.id} className='genreListItemStyle'>{genre.name}</li>
                                     )
                                 })}
 
