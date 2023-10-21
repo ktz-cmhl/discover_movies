@@ -16,7 +16,7 @@ export default function ListItem({title, poster_path, vote_average, movieId,}: L
             onClick={() => {
                 console.log(`${movieId} clicked`);
             }}
-            className="cardStyle">
+            className="">
             <img
                 className="movieCardImageStyle"
                 src={poster_path == null ? placeholder : `${imageUrl}${poster_path}`}

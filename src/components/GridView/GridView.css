@@ -1,12 +1,12 @@
-.gridStyle {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 16px;
-  margin: 16px;
-  text-align: center;
-}
+/*.gridStyle {*/
+/*  display: grid;*/
+/*  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*/
+/*  grid-gap: 16px;*/
+/*  margin: 16px;*/
+/*  text-align: center;*/
+/*}*/
 
-.buttonStyle {
-  background-color: #1a1a1a ;
-  color: white;
-}
+/*.buttonStyle {*/
+/*  background-color: #1a1a1a ;*/
+/*  color: white;*/
+/*}*/

@@ -2,6 +2,7 @@ import {Movie} from "../../models/Response";
 import ListItem from "../ListItem/ListItem";
 import "./GridView.css";
 import {Link} from "react-router-dom";
+
 interface GridProps {
     results: Array<Movie> | undefined
 }
@@ -12,7 +13,7 @@ export function GridView({results}: GridProps) {
     if (results != null) {
         return (
             <>
-                <div className="gridStyle">
+                <div className="grid grid-flow-col auto-cols-max md:auto-cols-min">
                     {movieList!.map((movie) => {
                         return (
                             <Link to={`/${movie.id}`} key={movie.id}>

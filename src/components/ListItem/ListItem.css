@@ -1,32 +1,32 @@
-.cardStyle {
-    border-color: white;
-    border-radius: 12px;
-    background-color: #242424;
-    width: 220px;
-    margin: 12px;
-}
+/*.cardStyle {*/
+/*    border-color: white;*/
+/*    border-radius: 12px;*/
+/*    background-color: #242424;*/
+/*    width: 220px;*/
+/*    margin: 12px;*/
+/*}*/
 
-.movieCardImageStyle {
-    width: 100%;
-    cursor: pointer;
-    border-radius: 12px 12px 0 0;
-    background-color: #242424;
-}
+/*.movieCardImageStyle {*/
+/*    width: 100%;*/
+/*    cursor: pointer;*/
+/*    border-radius: 12px 12px 0 0;*/
+/*    background-color: #242424;*/
+/*}*/
 
-.movieTitleStyle {
-    text-overflow: ellipsis;
-    cursor: pointer;
-    word-break: break-all;
-    color: white;
-    margin-top: 12px;
-    margin-left: 12px;
-    margin-right: 12px;
-    overflow: hidden;
-    white-space: nowrap;
-    max-lines: 1;
-}
+/*.movieTitleStyle {*/
+/*    text-overflow: ellipsis;*/
+/*    cursor: pointer;*/
+/*    word-break: break-all;*/
+/*    color: white;*/
+/*    margin-top: 12px;*/
+/*    margin-left: 12px;*/
+/*    margin-right: 12px;*/
+/*    overflow: hidden;*/
+/*    white-space: nowrap;*/
+/*    max-lines: 1;*/
+/*}*/
 
-.ratingBarStyle {
-    margin-bottom: 12px;
-    color: #2f6bbd;
-}
+/*.ratingBarStyle {*/
+/*    margin-bottom: 12px;*/
+/*    color: #2f6bbd;*/
+/*}*/

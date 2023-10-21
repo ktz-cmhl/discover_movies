@@ -1,67 +1,67 @@
-.detailViewBackdropStyle {
-    display: flex;
-    background-size: cover !important;;
-}
+/*.detailViewBackdropStyle {*/
+/*    display: flex;*/
+/*    background-size: cover !important;;*/
+/*}*/
 
-.detailViewStyle {
-    max-width: 1280px;
-    margin: auto;
-}
+/*.detailViewStyle {*/
+/*    max-width: 1280px;*/
+/*    margin: auto;*/
+/*}*/
 
-.flexBoxContainer {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    text-align: justify;
-}
+/*.flexBoxContainer {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    flex-direction: row;*/
+/*    text-align: justify;*/
+/*}*/
 
-.movieFactsStyle {
-    flex-direction: column;
-    width: 60%;
-}
+/*.movieFactsStyle {*/
+/*    flex-direction: column;*/
+/*    width: 60%;*/
+/*}*/
 
-.titleStyle {
-    color: white;
-    margin: 16px;
-    font-size: 24px;
-    width: 80%;
-}
+/*.titleStyle {*/
+/*    color: white;*/
+/*    margin: 16px;*/
+/*    font-size: 24px;*/
+/*    width: 80%;*/
+/*}*/
 
-.movieFactsTextStyle {
-    color: aliceblue;
-    margin: 16px;
-    width: 80%;
-    font-size: 20px;
-}
+/*.movieFactsTextStyle {*/
+/*    color: aliceblue;*/
+/*    margin: 16px;*/
+/*    width: 80%;*/
+/*    font-size: 20px;*/
+/*}*/
 
-.backdropStyle {
-    width: 100%;
-    opacity: 0.1;
-}
+/*.backdropStyle {*/
+/*    width: 100%;*/
+/*    opacity: 0.1;*/
+/*}*/
 
-.genreListStyle {
-    margin: 16px;
-    color: aliceblue;
-    list-style-type: square;
-    padding-left: 0;
-    font-size: 20px;
-}
+/*.genreListStyle {*/
+/*    margin: 16px;*/
+/*    color: aliceblue;*/
+/*    list-style-type: square;*/
+/*    padding-left: 0;*/
+/*    font-size: 20px;*/
+/*}*/
 
-.genreListItemStyle {
-    color: black;
-    display: inline;
-    padding: 8px;
-    border-radius: 30px;
-    margin-inline-end: 12px;
-    background-color: white;
-    font-size: 20px;
-}
+/*.genreListItemStyle {*/
+/*    color: black;*/
+/*    display: inline;*/
+/*    padding: 8px;*/
+/*    border-radius: 30px;*/
+/*    margin-inline-end: 12px;*/
+/*    background-color: white;*/
+/*    font-size: 20px;*/
+/*}*/
 
-.posterStyle {
-    width: 200px;
-    height: 300px;
-    margin-top: 16px;
-    margin-left: 16px;
-    margin-bottom: 16px;
-    border-radius: 20px;
-}
+/*.posterStyle {*/
+/*    width: 200px;*/
+/*    height: 300px;*/
+/*    margin-top: 16px;*/
+/*    margin-left: 16px;*/
+/*    margin-bottom: 16px;*/
+/*    border-radius: 20px;*/
+/*}*/
