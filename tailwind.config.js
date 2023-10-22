@@ -5,7 +5,23 @@ export default {
         "./src/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
-        extend: {},
+        extend: {
+            gridTemplateColumns: {
+                'movieGrid': 'repeat(auto-fit, minmax(220px, 1fr))',
+            },
+            colors: {
+                'backgroundColor': '#0d253f',
+                'cardColor': '#01b4e4',
+                'accentColor': '#90cea1',
+                'headerColor': '#040C14',
+            },
+            zIndex: {
+                '750': '750',
+            },
+        },
+        fontFamily: {
+            sans: ['Noto Sans', 'sans-serif'],
+        },
     },
     plugins: [],
 }

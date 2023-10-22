@@ -16,14 +16,14 @@ export default function ListItem({title, poster_path, vote_average, movieId,}: L
             onClick={() => {
                 console.log(`${movieId} clicked`);
             }}
-            className="">
+            className="w-56 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <img
-                className="movieCardImageStyle"
+                className="w-full"
                 src={poster_path == null ? placeholder : `${imageUrl}${poster_path}`}
                 placeholder={placeholder}
                 alt={title}
             />
-            <p className="movieTitleStyle">{title} ({})</p>
+            <p className="movieTitleStyle">{title}</p>
             <Rating
                 className="ratingBarStyle"
                 initialValue={vote_average / 2}

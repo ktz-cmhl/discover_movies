@@ -13,7 +13,7 @@ export function GridView({results}: GridProps) {
     if (results != null) {
         return (
             <>
-                <div className="grid grid-flow-col auto-cols-max md:auto-cols-min">
+                <div className="grid grid-cols-movieGrid">
                     {movieList!.map((movie) => {
                         return (
                             <Link to={`/${movie.id}`} key={movie.id}>
