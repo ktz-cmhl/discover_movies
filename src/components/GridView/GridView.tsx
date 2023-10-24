@@ -9,12 +9,11 @@ interface GridProps {
 
 export function GridView({results}: GridProps) {
 
-    const movieList = results;
     if (results != null) {
         return (
             <>
-                <div className="grid grid-cols-movieGrid">
-                    {movieList!.map((movie) => {
+                <div className="grid grid-cols-movieGrid gap-4">
+                    {(results)!.map((movie) => {
                         return (
                             <Link to={`/${movie.id}`} key={movie.id}>
                                 <ListItem

@@ -11,7 +11,7 @@ export default {
             },
             colors: {
                 'backgroundColor': '#0d253f',
-                'cardColor': '#01b4e4',
+                'cardColor': '#014e64',
                 'accentColor': '#90cea1',
                 'headerColor': '#040C14',
             },

@@ -1,7 +1,9 @@
 import {imageUrl} from "../../utils/constants";
-import placeholder from "../../assets/react.svg";
+import placeholder from "../../assets/movie-file-svgrepo-com.svg";
 import "./ListItem.css";
 import {Rating} from "react-simple-star-rating";
+import {LazyLoadImage} from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/black-and-white.css';
 
 interface ListItemProps {
     movieId: number;
@@ -16,19 +18,19 @@ export default function ListItem({title, poster_path, vote_average, movieId,}: L
             onClick={() => {
                 console.log(`${movieId} clicked`);
             }}
-            className="w-56 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <img
-                className="w-full"
-                src={poster_path == null ? placeholder : `${imageUrl}${poster_path}`}
-                placeholder={placeholder}
-                alt={title}
+            className="w-56 mt-4 bg-cardColor rounded-lg flex flex-col">
+            <LazyLoadImage className="w-full h-10/12 rounded-t-lg cursor-pointer"
+                           src={`${imageUrl}${poster_path}`}
+                           placeholderSrc={placeholder}
+                           effect='black-and-white'
             />
-            <p className="movieTitleStyle">{title}</p>
+            <p className="break-words text-lg text-gray-300 truncate p-2">{title}</p>
             <Rating
-                className="ratingBarStyle"
+                className='mb-4 ml-2'
                 initialValue={vote_average / 2}
                 allowFraction={true}
                 size={20}
+                SVGstyle={{'display': 'inline'}}
                 fillColor="#2f6bbd"
                 readonly={true}
             />

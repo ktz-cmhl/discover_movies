@@ -5,6 +5,7 @@ import {DetailResponse} from "../../models/DetailResponse.ts";
 import {useParams} from "react-router-dom";
 import "./DetailView.css"
 import posterPlaceholder from "../../assets/movie-file-svgrepo-com.svg"
+import {DotSpinner} from "@uiball/loaders";
 // interface DetailProps{
 //     movieId:number
 // }
@@ -20,7 +21,13 @@ export default function DetailView() {
     if (movieDetail == null) {
         return (
             <>
-                <p>Loading...</p>
+                <div className='fixed z-auto mx-auto left-1/2 top-1/2'>
+                    <DotSpinner
+                        color='#ffffff'
+                        size={50}
+                        speed={0.9}
+                    />
+                </div>
             </>
         )
     } else {
@@ -30,29 +37,38 @@ export default function DetailView() {
             backgroundRepeat: 'no-repeat',
             background: `linear-gradient(rgba(33,53,71,.8), rgba(33,53,71,.8)), url(${imageUrl}${movieDetail.backdrop_path})`,
         };
+        /*.posterStyle {*/
+        /*    width: 200px;*/
+        /*    height: 300px;*/
+        /*    margin-top: 16px;*/
+        /*    margin-left: 16px;*/
+        /*    margin-bottom: 16px;*/
+        /*    border-radius: 20px;*/
+        /*}*/
         return (
-            <div className='detailViewBackdropStyle' style={backdropStyle}>
-                <div className='detailViewStyle'>
-                    <div className='flexBoxContainer'>
+            <div className='flex !bg-cover' style={backdropStyle}>
+                <div className='max-w-screen-xl m-auto'>
+                    <div className='flex justify-center flex-row text-justify'>
                         <img
-                            className="posterStyle"
+                            className="h-72 rounded-lg mt-4 ml-4 mb-4"
                             src={movieDetail.poster_path == null ? posterPlaceholder : `${imageUrl}${movieDetail.poster_path}`}
                             placeholder={posterPlaceholder}
                             alt={movieDetail.title}/>
 
-                        <div className='movieFactsStyle'>
+                        <div className='flex-col w-7/12'>
 
-                            <p className='titleStyle'><strong>{movieDetail.title}</strong></p>
+                            <p className='text-white m-4 w-10/12 text-2xl'><strong>{movieDetail.title}</strong></p>
 
                             {/*<p className='movieFactsTextStyle'>Release*/}
                             {/*    Date: {movieDetail.release_date != null ? movieDetail.release_date!.toString() : 'Unknown'}</p>*/}
 
-                            <p className='movieFactsTextStyle'>{movieDetail.overview}</p>
+                            <p className='m-4 text-white text-xl w-10/12'>{movieDetail.overview}</p>
 
-                            <ul className='genreListStyle' title='Genres'>
+                            <ul className='m-4 list-disc flex pl-0 text-xl' title='Genres'>
                                 {movieDetail.genres?.map((genre) => {
                                     return (
-                                        <li key={genre.id} className='genreListItemStyle'>{genre.name}</li>
+                                        <li key={genre.id}
+                                            className='bg-backgroundColor text-white inline p-2 rounded-xl me-3 text-xl'>{genre.name}</li>
                                     )
                                 })}
 

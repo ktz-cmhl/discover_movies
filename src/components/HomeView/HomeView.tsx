@@ -7,6 +7,8 @@ import axios from "axios";
 import ReactPaginate from "react-paginate";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import logo from '../../assets/theater.png';
+import {Link} from "react-router-dom";
+import {DotSpinner} from "@uiball/loaders";
 
 export default function HomeView() {
     const useStorageState = (
@@ -30,31 +32,22 @@ export default function HomeView() {
     const movieUrl = `${baseUrl}discover/movie?api_key=${apiKey}&page=${pageNumber}`;
     const searchMoviesUrl = `${baseUrl}search/movie?query=${searchInput}&api_key=${apiKey}&page=${pageNumber}`
     const [movies, setMovies] = useState<MovieResponse>();
-
-    let isLoading = false;
+    const [isLoading, setLoading] = useState(true);
     useEffect(() => {
-        isLoading = true;
-        if (searchInput == '') {
-            axios.get(movieUrl).then((response) => {
-                setMovies(response.data);
-                isLoading = false;
-            });
-        } else {
-            axios.get(searchMoviesUrl).then((response) => {
-                setMovies(response.data);
-            });
-        }
-    }, [movieUrl, pageNumber, searchInput]);
-    const handlePageChange = () => {
-        if (movies != null && movies.total_pages != null) {
-            if (movies!.total_pages! > pageNumber) {
-                setPageNumber(pageNumber + 1);
+        setLoading(true);
+        setTimeout(() => {
+            if (searchInput == '') {
+                axios.get(movieUrl).then((response) => {
+                    setMovies(response.data);
+                    setLoading(false);
+                });
             } else {
-                alert("You have reached the maximum page number.");
+                axios.get(searchMoviesUrl).then((response) => {
+                    setMovies(response.data);
+                });
             }
-        }
-        console.log(pageNumber);
-    }
+        }, 1500);
+    }, [movieUrl, pageNumber, searchInput, searchMoviesUrl]);
 
     const handleSearchInput = (event: ChangeEvent<HTMLInputElement>) => {
         setSearchInput(event.target.value);
@@ -71,37 +64,24 @@ export default function HomeView() {
     if (isLoading) {
         return (
             <>
-                <header className='nav'>
-                    <h2>Discover Movies</h2>
-                    <input className='searchBoxStyle'
-                           placeholder="Search Movies" type='search'
-                           value={searchInput}
-                           onChange={handleSearchInput}/>
-                </header>
+                <div className='fixed z-auto mx-auto left-1/2 top-1/2'>
+                    <DotSpinner
+                        color='#ffffff'
+                        size={50}
+                        speed={0.9}
+                    />
+                </div>
             </>
         );
     } else {
-        /*    position: relative;*/
-        /*    z-index: 750;*/
-        /*    background-color: #242424;*/
-        /*    color: white;*/
-        /*    padding-left: 16px;*/
-        /*    display: flex;*/
-        /*    margin-bottom: 16px;*/
-        /*    -ms-flex-align: center;*/
-        /*    align-items: center;*/
-        /*    -ms-flex-pack: justify;*/
-        /*    justify-content: space-between;*/
-        /*    --hide-animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);*/
-        /*    --show-animation-timing-function: cubic-bezier(0.22, 1, 0.27, 1);*/
-        /*    transition: all .5s var(--hide-animation-timing-function);*/
+
         return (
-            <div className='bg-backgroundColor'>
+            <div className='bg-backgroundColor mb-4'>
                 <header
                     className='flex align-middles bg-headerColor relative flex-row z-750 mb-4 align-middle justify-between p-2'>
                     <div className='flex p-2 items-center'>
                         <img className='w-11 h-11 mr-4' src={logo} alt='Movie Logo'/>
-                        <h2 className='text-center text-2xl text-white'>Discover Movies</h2>
+                        <Link to={"/"} className='text-center text-2xl text-white'>Discover Movies</Link>
                     </div>
                     <input className='p-3 w-80 rounded-xl'
                            placeholder="Search Movies" type='search'
@@ -116,21 +96,18 @@ export default function HomeView() {
                                    }}
                                    disableInitialCallback={true}
                                    breakLabel='...'
-                                   className='flex flex-row'
-                                   breakLinkClassName='pageLinkStyle'
+                                   className='flex flex-row rounded-xl p-3 items-center bg-cardColor mr-5 justify-between mt-2 mb-2'
+                                   breakLinkClassName='w-10 h-10 grid place-content-center bg-white rounded-xl text-center mx-2 text-base text-black'
                                    previousLabel={<FontAwesomeIcon icon='angle-left'/>}
                                    nextLabel={<FontAwesomeIcon icon='angle-right'/>}
                                    pageRangeDisplayed={8}
                                    initialPage={pageNumber - 1}
-                                   previousLinkClassName='pageLinkStyle'
-                                   nextLinkClassName='pageLinkStyle'
-                                   pageLinkClassName='pageLinkStyle'
-                                   activeLinkClassName='activePageLinkStyle'
+                                   previousLinkClassName='w-10 h-10 grid place-content-center bg-white rounded-xl text-center mx-2 text-base text-balck'
+                                   nextLinkClassName='w-10 h-10 grid place-content-center bg-white rounded-xl text-center mx-2 text-base text-balck'
+                                   pageLinkClassName='w-10 h-10 grid place-content-center bg-white rounded-xl text-center mx-2 text-base text-black'
+                                   activeLinkClassName='w-11 h-11 grid place-content-center bg-[#040c14] rounded-xl text-center mx-2 text-base text-white'
                     />
                     <GridView results={movies?.results}/>
-                    <div>
-                        <button onClick={handlePageChange} className="buttonStyle">Next</button>
-                    </div>
                 </div>
             </div>
         );
